@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "./pages/home";
 import Post from './pages/Post'
-import Home from './pages/Home'
-
 const Router = () => {
   return (
     <BrowserRouter>
