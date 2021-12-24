@@ -24,7 +24,7 @@ const Home = () => {
         {posts &&
           posts.map((item, key) => (
             <li className="li-post" key={item.id + key}>
-              <Link to={`/${item.id}`}>
+              <Link to={{ pathname: `/${item.id}`, state: posts }} params>
                 <h4>{item.title}</h4>
                 <p>{item.body}</p>
               </Link>
