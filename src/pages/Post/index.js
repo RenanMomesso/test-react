@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "./post.css";
 import axios from "axios";
 
 const Post = () => {
@@ -30,33 +31,26 @@ const Post = () => {
       `https://jsonplaceholder.typicode.com/posts/${postId}`
     );
     setDataPost(data);
+    getAllPostsPlus3();
   };
 
   useEffect(() => {
-    getAllPostsPlus3();
     getPostByUrl();
-  }, [history, dataPost]);
+  }, [history.location.pathname]);
 
   return (
-    <div style={{ width: 1200, margin: "auto" }}>
+    <div style={{ width: 1200, margin: "auto" }} className="main-post">
+      <button onClick={() => history.push("/")}>HOME</button>
       <div>
-        <h4>{dataPost.title}</h4>
+        <h4 style={{ textTransform: "uppercase" }}>{dataPost.title}</h4>
         <div>{dataPost.body}</div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          marginTop: 50,
-          borderTop: "1px solid black",
-          paddingTop: 20,
-        }}
-      >
+      <div className="posts-read-more">
         {postsReadMore.map((item, index) => {
           return (
-            <div>
-              <h4>{item.title}</h4>
-              <p>{item.body}</p>
+            <div style={{ marginRight: 30 }}>
+              <h4 style={{ textTransform: "uppercase" }}>{item.title}</h4>
+              <p style={{ textAlign: "justify" }}>{item.body}</p>
               <Link to={{ pathname: `/${item.id}`, state: allPosts }}>
                 read more
               </Link>
