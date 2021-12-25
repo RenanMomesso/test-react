@@ -1,6 +1,7 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import PostItem from "../../components/Item";
 import "./home.css";
 
 const Home = () => {
@@ -20,13 +21,18 @@ const Home = () => {
 
   return (
     <div className="main-home">
+      <button
+        className="button-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        Top
+      </button>
       <ul>
         {posts &&
           posts.map((item, key) => (
             <li className="li-post" key={item.id + key}>
               <Link to={{ pathname: `/${item.id}`, state: posts }} params>
-                <h4>{item.title}</h4>
-                <p>{item.body}</p>
+                <PostItem item={item} allPosts={[]} mainPost={false} />
               </Link>
             </li>
           ))}

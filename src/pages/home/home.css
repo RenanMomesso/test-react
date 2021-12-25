@@ -18,7 +18,7 @@
 }
 
 .li-post:hover {
-    background-color: rgb(231, 220, 220);
+    background-color: #414252;
 }
 
 .li-post:first-child {
@@ -26,7 +26,7 @@
 }
 
 .li-post a {
-  color: black;
+  color: #FCA510;
   text-decoration: none;
 }
 
@@ -38,6 +38,15 @@
 
 .li-post p {
     font-size: 18px;
+}
+
+.button-to-top {
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    position: fixed;
+    left: 20px;
+    bottom: 30px;
 }
 
 @media screen and (max-width: 680px) {
