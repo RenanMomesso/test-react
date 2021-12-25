@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./post.css";
 import axios from "axios";
+import PostItem from "../../components/Item";
 
 const Post = () => {
   const history = useHistory();
@@ -9,7 +10,6 @@ const Post = () => {
   const postId = history.location.pathname.split("/")[1];
   const allPosts = history.location.state;
 
-  console.log(allPosts);
 
   const getAllPostsPlus3 = () => {
     let threePosts = [];
@@ -39,23 +39,14 @@ const Post = () => {
   }, [history.location.pathname]);
 
   return (
-    <div style={{ width: 1200, margin: "auto" }} className="main-post">
+    <div className="main-post">
       <button onClick={() => history.push("/")}>HOME</button>
       <div>
-        <h4 style={{ textTransform: "uppercase" }}>{dataPost.title}</h4>
-        <div>{dataPost.body}</div>
+        <PostItem item={dataPost} mainPost={false} />
       </div>
       <div className="posts-read-more">
         {postsReadMore.map((item, index) => {
-          return (
-            <div style={{ marginRight: 30 }}>
-              <h4 style={{ textTransform: "uppercase" }}>{item.title}</h4>
-              <p style={{ textAlign: "justify" }}>{item.body}</p>
-              <Link to={{ pathname: `/${item.id}`, state: allPosts }}>
-                read more
-              </Link>
-            </div>
-          );
+          return <PostItem item={item} allPosts={allPosts} />;
         })}
       </div>
     </div>
