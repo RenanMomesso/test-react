@@ -1,5 +1,7 @@
 .main-post {
   margin-top: 120px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .posts-read-more {
@@ -11,8 +13,19 @@
 }
 
 @media screen and (max-width: 680px) {
+
+.main-post {
+    margin-top: 20px;
+    max-width: 420px ;
+}
+
   .posts-read-more {
     display: flex;
     flex-direction: column;
+  }
+
+  .posts-read-more div h4,
+  .posts-read-more div p {
+    font-size: 20px;
   }
 }
