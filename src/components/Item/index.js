@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
+import "./item.css";
 
-const PostItem = ({ item, allPosts }) => {
-  console.log(item, allPosts);
+const PostItem = ({ item, allPosts = [], mainPost = true }) => {
+  if (!item || !item.title || !item.body) return null;
   return (
-    <div style={{ marginRight: 30 }}>
-      <h4 style={{ textTransform: "uppercase" }}>{item.title}</h4>
-      <p style={{ textAlign: "justify" }}>{item.body}</p>
-      <Link to={{ pathname: `/${item.id}`, state: allPosts }}>read more</Link>
+    <div className="div-post">
+      <h4>{item.title}</h4>
+      <p>{item.body}</p>
+      {mainPost && (
+        <Link to={{ pathname: `/${item.id}`, state: allPosts }}>read more</Link>
+      )}
     </div>
   );
 };

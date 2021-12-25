@@ -1,0 +1,23 @@
+.div-post {
+  margin-right: 30px;
+}
+
+.div-post h4 {
+    text-transform: uppercase;
+    font-weight: bolder;
+
+}
+
+.div-post p {
+    text-align: justify;
+}
+
+.div-post a {
+  color: white;
+}
+
+@media screen and (max-width:800px) {
+  .div-post {
+    max-width: 400px;
+  }
+}
