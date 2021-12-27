@@ -1,23 +1,16 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import PostItem from "../../components/Item";
+import { useSelector, } from "react-redux";
+
 import "./home.css";
 
+
 const Home = () => {
-  const [posts, setPosts] = useState([]);
+ 
 
-  const getAllPosts = async () => {
-    const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
-    );
+  const posts = useSelector((state) => state.appData.data);
 
-    setPosts(data);
-  };
 
-  useEffect(() => {
-    getAllPosts();
-  }, []);
 
   return (
     <div className="main-home">

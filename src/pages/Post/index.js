@@ -10,14 +10,19 @@ const Post = () => {
   const postId = history.location.pathname.split("/")[1];
   const allPosts = history.location.state;
 
-
   const getAllPostsPlus3 = () => {
     let threePosts = [];
+
     for (let i = 0; i < allPosts.length; i++) {
       if (allPosts[i].id == postId) {
-        threePosts.push(allPosts[i + 1]);
-        threePosts.push(allPosts[i + 2]);
-        threePosts.push(allPosts[i + 3]);
+        threePosts.push(
+          allPosts[(i + 1) >= allPosts.length ? ((i + 1) - allPosts.length) : (i + 1)]
+        );
+        threePosts.push(
+          allPosts[(i + 2) >= allPosts.length ? ((i + 2) - allPosts.length) : (i + 2)]
+        ); threePosts.push(
+          allPosts[(i + 3) >= allPosts.length ? ((i + 3) - allPosts.length) : (i + 3)]
+        );
       }
     }
     setPostsReadMore(threePosts);
